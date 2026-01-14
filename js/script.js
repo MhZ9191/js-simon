@@ -14,10 +14,23 @@ const intervalID = setInterval(countF, 1000);
 
 //VARIABILI FORM
 const aForm = document.getElementById("answers-form");
+const tInput = document.querySelectorAll(".form-control");
+const message = document.getElementById("message");
 
 //EVENT LISTENER FORM
 aForm.addEventListener("submit", function (e) {
   e.preventDefault();
+  let contCorrispondenze = 0;
+  const outputArray = [];
+  //ciclo per contare corrispondenze
+  for (let i = 0; i < 5; i++) {
+    if (liArray.includes(parseInt(tInput[i].value))) {
+      ++contCorrispondenze;
+      outputArray.push(tInput[i].value);
+    }
+  }
+
+  message.innerText = `Hai indovinato ${contCorrispondenze} numeri! (${outputArray})`;
 });
 
 countF(); //la chiamo subito
