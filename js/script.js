@@ -1,6 +1,7 @@
 //VARIABILI PER IL COUNTDOWN
 const countD = document.getElementById("countdown");
 let counter = 5; //imposta i secondi del countdown
+const info = document.getElementById("instructions"); //info per utente
 
 //VARIABILI PER I NUMERI CASUALI
 const numbers = document.getElementById("numbers-list");
@@ -11,6 +12,14 @@ outputNumbers(liArray); //invoco la funzione che assegna i numeri ai tag <li>
 //VARIABILI INTERVAL
 const intervalID = setInterval(countF, 1000);
 
+//VARIABILI FORM
+const aForm = document.getElementById("answers-form");
+
+//EVENT LISTENER FORM
+aForm.addEventListener("submit", function (e) {
+  e.preventDefault();
+});
+
 countF(); //la chiamo subito
 // FUNCTION INTERVAL COUNTDOWN
 function countF() {
@@ -18,6 +27,10 @@ function countF() {
     countD.innerText = counter--;
   } else {
     clearInterval(intervalID);
+    countD.innerText = "";
+    numbers.classList.add("d-none");
+    aForm.classList.remove("d-none");
+    info.innerText = "Inserisci i numeri!";
   }
 }
 
