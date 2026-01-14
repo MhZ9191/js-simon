@@ -6,7 +6,9 @@ let counter = 5; //imposta i secondi del countdown
 const numbers = document.getElementById("numbers-list");
 const liArray = generateFiveRandomNumbers(); //assegno un array di 5 numeri random
 
-//VARIABILE INTERVAL
+outputNumbers(liArray); //invoco la funzione che assegna i numeri ai tag <li>
+
+//VARIABILI INTERVAL
 const intervalID = setInterval(countF, 1000);
 
 countF(); //la chiamo subito
@@ -32,4 +34,12 @@ function generateFiveRandomNumbers() {
   }
 
   return tmpArray;
+}
+
+//FUNCTION TO ASSIGN NUMBER TO <LI>
+function outputNumbers(listArray) {
+  for (let i = 0; i < listArray.length; i++) {
+    numbers.innerHTML += `<li>${listArray[i]}</li>`;
+  }
+  return;
 }
